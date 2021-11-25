@@ -1,0 +1,36 @@
+<head>
+  <title>simple-discussion-blaze</title>
+</head>
+
+<body>
+  <h1>Welcome!</h1>
+
+  {{> loginButtons}}
+  <hr />
+  {{#if currentUser}}
+      {{> chat}}
+  {{else}}
+  <p>Please Sign in</p>
+  {{/if}}
+ 
+</body>
+
+<template name="chat">
+  {{#each messages}}
+    <p>{{getEmail userId}}: {{text}}</p>
+    {{else}}
+    <p>No Messages.</p>
+  {{/each}}
+
+  <form id="chat-form">
+    <p>
+      <textarea 
+        rows="10"
+        cols="50"
+        name="text"
+        placeholder="Write a message"></textarea>
+    </p>
+    <p><input type="submit" value="Send" /></p>
+  </form>
+</template>
+
